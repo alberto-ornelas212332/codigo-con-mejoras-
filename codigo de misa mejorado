@@ -1,0 +1,183 @@
+C_B = []
+F_B = []
+Q_U = []
+E_D = []
+C_OO =[]
+C_A = []
+A_A = []
+F_A = []
+A_L = {}
+C_O = {}
+x = -1
+xx = -1
+y = 0
+Pro =float 
+cal_min = 6.0
+k = str
+h = str
+while True:
+    try:
+        Action = int(input('\n'"1: Agregar alumno"'\n'
+                           "2: Consultar alumno"'\n'
+                           "3: Eliminar alumno"'\n'
+                           "4: Actualizar informacion de alumno"'\n'
+                           "5: Lista de estudiantes"'\n'
+                           "6: Promedio de alumno"'\n'
+                           "7: Reporte de alumno"'\n'
+                           "8: Salir"'\n'
+                           "¿Que desea hacer?"'\n'))
+
+    #Agregar alumnos
+        if Action == 1:
+          
+            for key in A_L:
+                x+=1
+                xx+=1
+            #print (x,xx)
+            nombre_nuevo = str(input("Nombre del alumno:  "))
+            codigo_nuevo = str(input("Codigo del alumno: "))
+            C_OO.append (codigo_nuevo)
+            E_D.append (input(str("Edad del alumno: ")))
+            C_A.append (str(input("Carrera: ")))
+            A_A.append (int(input("Asistencias: ")))
+            F_A.append (int(input("Faltas: ")))
+            C_B.append (float(input("Calfición Ciencias biológicas: ")))
+            F_B.append (float(input("Calificación Fisica biólogica: ")))
+            Q_U.append (float(input("Calificación Química: ")))
+            cal_nueva = f"Ciencias biológicas: {C_B[x]} Física biomédica: {F_B[x]} Química bilógica: {Q_U[x]}",
+            C_O.update ({codigo_nuevo:cal_nueva})
+            A_L.update({nombre_nuevo:cal_nueva})
+            ALLOC= list(A_L.keys())
+            AOLOC = list(C_O.keys())
+            x = ALLOC.index(nombre_nuevo)
+            xx = AOLOC.index(codigo_nuevo)
+            x =0
+            xx = 0
+            
+    #Consultar alumno
+        elif Action == 2:
+            des = int(input('\n'"1: Buscar por nombre"'\n'
+                        "2: Buscar por código"'\n'))    
+            if des == 1:
+                nombre_cons = str(input("Nombre del alumno: "))
+                ALLOC= list(A_L.keys())
+                z = ALLOC.index(nombre_cons)
+                print (f"Alumno: {nombre_cons}")
+                print (f"Código: {C_OO[z]}")
+                print (f"Carrera: {C_A[z]}")
+                print (f"Asistencias: {A_A[z]}")
+                print (f"Faltas: {F_A[z]}")
+                print (f"Ciencias biológicas: {C_B[z]}")
+                print (f"Física biomédica: {F_B[z]}")
+                print (f"Química bilógica: {Q_U[z]}")
+            elif des == 2:
+                codigo_cons = str(input("Código del alumno: "))
+                AOLOC = list(C_O.keys())
+                zz =AOLOC.index(codigo_cons)
+                print (f"Código: {codigo_cons}")
+                print (f"Carrera: {C_A[zz]}")
+                print (f"Asistencias: {A_A[z]}")
+                print (f"Faltas: {F_A[z]}")
+                print (f"Ciencias biológicas: {C_B[zz]}")
+                print (f"Física biomédica: {F_B[zz]}")
+                print (f"Química bilógica: {Q_U[zz]}")
+    #Eliminar Alumno
+        elif Action == 3:
+        
+            nombre_elim = str(input("Nombre del alumno: "))
+            codigo_elim = str(input("Código del alumno: "))
+            ALLOC= list(A_L.keys())
+            AOLOC = list(C_O.keys())
+            w = ALLOC.index(nombre_elim)
+            print (w)
+            del C_B[w]
+            del Q_U[w]
+            del C_OO[w]
+            del F_A[w]
+            del A_A[w]
+            del F_B[w]
+            del E_D [w]
+            del C_A [w]
+            x = ALLOC.index(nombre_elim)
+            xx = AOLOC.index(codigo_elim)
+            A_L.pop(nombre_elim)
+            C_O.pop(codigo_elim)
+            x= 0
+            xx= 0
+    #Actualizar alumno 
+        elif Action == 4:
+            if des == 1:
+                nombre_act = str(input("Nombre del alumno: "))
+                codigo_act = str(input("Código del alumno: "))
+                ALLOC= list(A_L.keys())
+                AOLOC = list(C_O.keys())
+                z = ALLOC.index(nombre_act)
+                C_OO[z]= codigo_act
+                E_D[z]= input(str("Edad del alumno: "))
+                C_A[z]= str(input("Carrera: "))
+                F_A[z]= int(input("Faltas: "))
+                A_A[z]= int(input("Asistnecias: "))
+                C_B[z]= float(input("Calfición Ciencias biológicas: "))
+                F_B[z]= float(input("Calificación Fisica biólogica: "))
+                Q_U[z]= float(input("Calificación Química: "))
+                cal_act = f"Ciencias biológicas: {C_B[z]} Física biomédica: {F_B[z]} Química bilógica: {Q_U[z]}",
+                C_O.update ({codigo_act:cal_act})
+                A_L.update({nombre_act:cal_act})
+                print (A_L)
+
+            
+    #Lista de estudiantes
+        elif Action == 5:
+            for key,value in A_L.items():
+                print (f"{key} Código: {C_OO[y]} Edad: {E_D[y]} Carrera: {C_A[y]} Faltas: {F_A[y]} Asistnecias: {A_A[y]} {value}")
+                y+=1
+            y = 0
+    #Consultar promedio
+        elif Action == 6:
+            des = int(input('\n'"1: Buscar por nombre"'\n'
+                        "2: Buscar por código"'\n'))
+            if des == 1:
+                nombre_pro = str(input("Nombre del Almuno: "))
+                ALLOC= list(A_L.keys())
+                z = ALLOC.index(nombre_pro)
+                pro = (C_B[z] + F_B[z]+ Q_U[z])/3
+                print (f"Promedio: {pro}")
+
+            elif des == 2:
+                codigo_pro = str(input("Código del alumno: "))
+                AOLOC= list(C_O.keys())
+                z = AOLOC.index(codigo_pro)
+                pro = (C_B[z] + F_B[z ]+ Q_U[z])/3
+                print (f"Promedio: {pro}")
+    #Reporte
+        elif Action == 7:
+            des = int(input('\n'"1: Buscar por nombre"'\n'
+                        "2: Buscar por código"'\n'))
+            if des == 1:
+                nombre_rep = str(input("Nombre del Almuno: "))
+                ALLOC= list(A_L.keys())
+                z = ALLOC.index(nombre_rep)
+                if C_B[z]<cal_min:
+                    k = ("REPROBADO ")
+                else:
+                    k = ("APROBADO ")
+                if F_B[z]<cal_min:
+                    h = ("REPROBADO ")
+                else:
+                    h = ("APROBADO ")
+                if Q_U[z]<cal_min:
+                    ñ = ("REPROBADO ")
+                else:
+                    ñ = ("APROBADO ")
+                print (f"Alumno: {nombre_rep}")
+                print (f"Código: {C_OO[z]}")
+                print (f"Carrera: {C_A[z]}")
+                print (f"Asistencias: {A_A[z]}")
+                print (f"Faltas: {F_A[z]}")
+                print (f"Ciencias biológicas: {C_B[z]} {k}")
+                print (f"Física biomédica: {F_B[z]} {h}")
+                print (f"Química bilógica: {Q_U[z]} {ñ}")
+
+    except ValueError:
+        print ("Opción no valida")
+
