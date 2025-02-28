@@ -5,6 +5,9 @@ Objetivos a modificar
 - Estandarización de busqueda
 - Límite para el valor de calificaciones
 - Mejorar el control de modificación
+
+
+
 Integrantes
 - Eddy Armando De La Cruz Huezo.
 - Martha Alicia Rivera Santos
