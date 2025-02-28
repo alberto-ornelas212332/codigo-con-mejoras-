@@ -8,8 +8,3 @@ Objetivos a modificar
 
 
 
-Integrantes
-- Eddy Armando De La Cruz Huezo.
-- Martha Alicia Rivera Santos
-- Yahir Mejía Vázquez
-
