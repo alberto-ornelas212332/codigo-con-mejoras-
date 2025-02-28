@@ -4,4 +4,9 @@ Objetivos a modificar
 - Agregar asistencias uno por uno
 - Estandarización de busqueda
 - Límite para el valor de calificaciones
-- Mejorar el control de modificación 
+- Mejorar el control de modificación
+Integrantes
+- Eddy Armando De La Cruz Huezo.
+- Martha Alicia Rivera Santos
+- Yahir Mejía Vázquez
+
