@@ -133,7 +133,7 @@ while True:
                 zz = APLOC.index(apellido_cons)
                 print ('\n'f"Nombre: {N_O[zz]}")
                 print (f"Apellido: {apellido_cons}")
-                print (f"Código: {C_OO[z]}")
+                print (f"Código: {C_OO[zz]}")
                 print (f"Carrera: {C_A[zz]}")
                 print (f"Asistencias: {A_A[zz]}")
                 print (f"Faltas: {F_A[zz]}")
@@ -184,7 +184,7 @@ while True:
                             break
                         else:
                             print ("Solo se pueden letras")
-                    except ValueError
+                    except ValueError:
                         print ("No se aceptan números")
                 codigo_act = int(input("Código del alumno: "))
                 ALLOC= list(A_L.keys())
@@ -201,7 +201,7 @@ while True:
                 C_O.update ({codigo_act:cal_act})
                 A_L.update({nombre_act:cal_act})
                 print (A_L)
-            elif des == 2:
+            #elif des == 2:
                 
 
             
@@ -258,4 +258,4 @@ while True:
                 print (f"Química bilógica: {Q_U[z]} {ñ}")
 
     except ValueError:
-        print ("Opción no valida")
+        print ("Opción no valida")
