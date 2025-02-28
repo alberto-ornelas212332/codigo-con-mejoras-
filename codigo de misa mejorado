@@ -6,15 +6,21 @@ C_OO =[]
 C_A = []
 A_A = []
 F_A = []
+A_PP= []
+N_O = []
 A_L = {}
 C_O = {}
+A_P = {}
 x = -1
 xx = -1
+xxx = -1
 y = 0
 Pro =float 
 cal_min = 6.0
 k = str
 h = str
+Max = 10
+Min = 0
 while True:
     try:
         Action = int(input('\n'"1: Agregar alumno"'\n'
@@ -34,65 +40,121 @@ while True:
                 x+=1
                 xx+=1
             #print (x,xx)
-            nombre_nuevo = str(input("Nombre del alumno:  "))
-            codigo_nuevo = str(input("Codigo del alumno: "))
+            while True:
+                try:
+                    nombre_nuevo = str(input("Nombre del alumno:  ")).upper()
+                    apellido_nuevo = str(input("Apellidos del alumno: ")).upper()
+                    C = str(input("Carrera: ")).upper()
+                    if nombre_nuevo.isalpha() and apellido_nuevo.isalpha()and C.isalpha():
+                        break
+                    else:
+                        print ("Solo se pueden letras")
+                except ValueError:
+                    print ("No se aceptan numeros")
+            
+            while True:
+                try:
+                    codigo_nuevo = int(input("Codigo del alumno: "))
+                    E_D.append (int(input("Edad del alumno: ")))
+                    A_A.append (int(input("Asistencias: ")))
+                    F_A.append (int(input("Faltas: ")))
+                    break
+                except ValueError:
+                    print ('\n'"Solo números")
+
+            print('\n'"Calificaciones del 0 al 10")
+            while True:
+                try:
+                    r = float(input("Calfición Ciencias biológicas: "))
+                    rr = float(input("Calificación Fisica biólogica: "))
+                    rrr = float(input("Calificación Química: "))
+                    if Min <r and rr and rrr <= Max:
+                        print ("Calificaciones agregadas")
+                        break
+                    else:
+                        print ("Califiaciones incorrectas")
+                except ValueError:
+                    print ("Solo numeros")
             C_OO.append (codigo_nuevo)
-            E_D.append (input(str("Edad del alumno: ")))
-            C_A.append (str(input("Carrera: ")))
-            A_A.append (int(input("Asistencias: ")))
-            F_A.append (int(input("Faltas: ")))
-            C_B.append (float(input("Calfición Ciencias biológicas: ")))
-            F_B.append (float(input("Calificación Fisica biólogica: ")))
-            Q_U.append (float(input("Calificación Química: ")))
-            cal_nueva = f"Ciencias biológicas: {C_B[x]} Física biomédica: {F_B[x]} Química bilógica: {Q_U[x]}",
+            A_PP.append (apellido_nuevo)
+            N_O.append (nombre_nuevo)
+            C_A.append (C)
+            C_B.append(r)
+            F_B.append(rr)
+            Q_U.append(rrr)
+            cal_nueva = f"Ciencias biológicas: {C_B[x]} Física biomédica: {F_B[x]} Química bilógica: {Q_U[x]}",
             C_O.update ({codigo_nuevo:cal_nueva})
             A_L.update({nombre_nuevo:cal_nueva})
+            A_P.update ({apellido_nuevo:cal_nueva})
             ALLOC= list(A_L.keys())
             AOLOC = list(C_O.keys())
+            APLOC = list(A_P.keys())
             x = ALLOC.index(nombre_nuevo)
             xx = AOLOC.index(codigo_nuevo)
+            xxx = APLOC.index(apellido_nuevo)
             x =0
             xx = 0
+            xxx = 0
             
     #Consultar alumno
         elif Action == 2:
             des = int(input('\n'"1: Buscar por nombre"'\n'
-                        "2: Buscar por código"'\n'))    
+                        "2: Buscar por código"'\n'
+                            "3: Buscar por apellido"'\n' ))    
             if des == 1:
-                nombre_cons = str(input("Nombre del alumno: "))
+                nombre_cons = str(input("Nombre del alumno: ")).upper()
                 ALLOC= list(A_L.keys())
                 z = ALLOC.index(nombre_cons)
-                print (f"Alumno: {nombre_cons}")
-                print (f"Código: {C_OO[z]}")
+                print ('\n'f"Alumno: {nombre_cons}")
+                print (f"Apellido: {A_PP[z]}")
+                print (f"Código: {C_OO[z]}")
                 print (f"Carrera: {C_A[z]}")
                 print (f"Asistencias: {A_A[z]}")
                 print (f"Faltas: {F_A[z]}")
-                print (f"Ciencias biológicas: {C_B[z]}")
-                print (f"Física biomédica: {F_B[z]}")
-                print (f"Química bilógica: {Q_U[z]}")
+                print (f"Ciencias biológicas: {C_B[z]}")
+                print (f"Física biomédica: {F_B[z]}")
+                print (f"Química bilógica: {Q_U[z]}")
             elif des == 2:
-                codigo_cons = str(input("Código del alumno: "))
+                codigo_cons = int(input("Código del alumno: "))
                 AOLOC = list(C_O.keys())
                 zz =AOLOC.index(codigo_cons)
-                print (f"Código: {codigo_cons}")
+                print ('\n'f"Nombre: {N_O[zz]}")
+                print (f"Apellido: {A_PP[zz]}")
+                print (f"Código: {codigo_cons}")
                 print (f"Carrera: {C_A[zz]}")
-                print (f"Asistencias: {A_A[z]}")
-                print (f"Faltas: {F_A[z]}")
-                print (f"Ciencias biológicas: {C_B[zz]}")
-                print (f"Física biomédica: {F_B[zz]}")
-                print (f"Química bilógica: {Q_U[zz]}")
+                print (f"Asistencias: {A_A[zz]}")
+                print (f"Faltas: {F_A[zz]}")
+                print (f"Ciencias biológicas: {C_B[zz]}")
+                print (f"Física biomédica: {F_B[zz]}")
+                print (f"Química bilógica: {Q_U[zz]}")
+            elif des == 3:
+                apellido_cons = str(input("Apellido del alumno: " )).upper()
+                APLOC = list(A_P.keys())
+                zz = APLOC.index(apellido_cons)
+                print ('\n'f"Nombre: {N_O[zz]}")
+                print (f"Apellido: {apellido_cons}")
+                print (f"Código: {C_OO[z]}")
+                print (f"Carrera: {C_A[zz]}")
+                print (f"Asistencias: {A_A[zz]}")
+                print (f"Faltas: {F_A[zz]}")
+                print (f"Ciencias biológicas: {C_B[zz]}")
+                print (f"Física biomédica: {F_B[zz]}")
+                print (f"Química bilógica: {Q_U[zz]}")
     #Eliminar Alumno
         elif Action == 3:
-        
             nombre_elim = str(input("Nombre del alumno: "))
-            codigo_elim = str(input("Código del alumno: "))
+            apellido_elim = str(input("Apellido del Alumno: "))
+            codigo_elim = str(input("Código del alumno: "))
+            #Apellido_elim = str(i
             ALLOC= list(A_L.keys())
             AOLOC = list(C_O.keys())
             w = ALLOC.index(nombre_elim)
-            print (w)
+            #print (w)
             del C_B[w]
             del Q_U[w]
             del C_OO[w]
+            del N_O[w]
+            del A_PP[w]
             del F_A[w]
             del A_A[w]
             del F_B[w]
@@ -100,42 +162,59 @@ while True:
             del C_A [w]
             x = ALLOC.index(nombre_elim)
             xx = AOLOC.index(codigo_elim)
+            xxx = APLOC.index(apellido_elim)
             A_L.pop(nombre_elim)
             C_O.pop(codigo_elim)
+            A_P.pop(apellido_elim)
             x= 0
             xx= 0
+            xxx = 0
     #Actualizar alumno 
         elif Action == 4:
+            des = int(input('\n'"1: Buscar por nombre"'\n'
+                        "2: Buscar por código"'\n'
+                            "3:Buscar por apellido"'\n' ))    
             if des == 1:
-                nombre_act = str(input("Nombre del alumno: "))
-                codigo_act = str(input("Código del alumno: "))
+                while True:
+                    try:
+                        nombre_act = str(input("Nombre del alumno: ")).upper
+                        apellido_act = str(input("Apellido del alumno: ")).upper
+                        C_act = str(input("Carrera: ")).upper()
+                        if nombre_act.isalpha() and apellido_act.isalpha and C_act.isalpha():
+                            break
+                        else:
+                            print ("Solo se pueden letras")
+                    except ValueError
+                        print ("No se aceptan números")
+                codigo_act = int(input("Código del alumno: "))
                 ALLOC= list(A_L.keys())
-                AOLOC = list(C_O.keys())
                 z = ALLOC.index(nombre_act)
                 C_OO[z]= codigo_act
                 E_D[z]= input(str("Edad del alumno: "))
                 C_A[z]= str(input("Carrera: "))
                 F_A[z]= int(input("Faltas: "))
                 A_A[z]= int(input("Asistnecias: "))
-                C_B[z]= float(input("Calfición Ciencias biológicas: "))
-                F_B[z]= float(input("Calificación Fisica biólogica: "))
-                Q_U[z]= float(input("Calificación Química: "))
-                cal_act = f"Ciencias biológicas: {C_B[z]} Física biomédica: {F_B[z]} Química bilógica: {Q_U[z]}",
+                C_B[z]= float(input("Calfición Ciencias biológicas: "))
+                F_B[z]= float(input("Calificación Fisica biólogica: "))
+                Q_U[z]= float(input("Calificación Química: "))
+                cal_act = f"Ciencias biológicas: {C_B[z]} Física biomédica: {F_B[z]} Química bilógica: {Q_U[z]}"
                 C_O.update ({codigo_act:cal_act})
                 A_L.update({nombre_act:cal_act})
                 print (A_L)
+            elif des == 2:
+                
 
             
     #Lista de estudiantes
         elif Action == 5:
             for key,value in A_L.items():
-                print (f"{key} Código: {C_OO[y]} Edad: {E_D[y]} Carrera: {C_A[y]} Faltas: {F_A[y]} Asistnecias: {A_A[y]} {value}")
+                print (f"{key} {A_PP[y]} Código: {C_OO[y]} Edad: {E_D[y]} Carrera: {C_A[y]} Faltas: {F_A[y]} Asistnecias: {A_A[y]} {value}")
                 y+=1
             y = 0
     #Consultar promedio
         elif Action == 6:
             des = int(input('\n'"1: Buscar por nombre"'\n'
-                        "2: Buscar por código"'\n'))
+                        "2: Buscar por código"'\n'))
             if des == 1:
                 nombre_pro = str(input("Nombre del Almuno: "))
                 ALLOC= list(A_L.keys())
@@ -144,7 +223,7 @@ while True:
                 print (f"Promedio: {pro}")
 
             elif des == 2:
-                codigo_pro = str(input("Código del alumno: "))
+                codigo_pro = str(input("Código del alumno: "))
                 AOLOC= list(C_O.keys())
                 z = AOLOC.index(codigo_pro)
                 pro = (C_B[z] + F_B[z ]+ Q_U[z])/3
@@ -152,7 +231,7 @@ while True:
     #Reporte
         elif Action == 7:
             des = int(input('\n'"1: Buscar por nombre"'\n'
-                        "2: Buscar por código"'\n'))
+                        "2: Buscar por código"'\n'))
             if des == 1:
                 nombre_rep = str(input("Nombre del Almuno: "))
                 ALLOC= list(A_L.keys())
@@ -166,18 +245,17 @@ while True:
                 else:
                     h = ("APROBADO ")
                 if Q_U[z]<cal_min:
-                    ñ = ("REPROBADO ")
+                    ñ = ("REPROBADO ")
                 else:
-                    ñ = ("APROBADO ")
+                    ñ = ("APROBADO ")
                 print (f"Alumno: {nombre_rep}")
-                print (f"Código: {C_OO[z]}")
+                print (f"Código: {C_OO[z]}")
                 print (f"Carrera: {C_A[z]}")
                 print (f"Asistencias: {A_A[z]}")
                 print (f"Faltas: {F_A[z]}")
-                print (f"Ciencias biológicas: {C_B[z]} {k}")
-                print (f"Física biomédica: {F_B[z]} {h}")
-                print (f"Química bilógica: {Q_U[z]} {ñ}")
+                print (f"Ciencias biológicas: {C_B[z]} {k}")
+                print (f"Física biomédica: {F_B[z]} {h}")
+                print (f"Química bilógica: {Q_U[z]} {ñ}")
 
     except ValueError:
-        print ("Opción no valida")
-
+        print ("Opción no valida")
